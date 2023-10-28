@@ -5,9 +5,19 @@ const manifest = defineManifest({
   manifest_version: 3,
   name: "CRX Example",
   version: "1.0.0",
-  action: {
-    default_popup: "src/index.html",
+  icons: {
+    32: "icons/leaf-32.png",
   },
+  action: {},
+  background: {
+    service_worker: "src/background.ts",
+  },
+  content_scripts: [
+    {
+      matches: ["https://papers.nips.cc/paper_files/paper/*/hash/*-Abstract.html"],
+      js: ["src/neurips.ts"],
+    },
+  ],
 });
 
 // https://vitejs.dev/config/
