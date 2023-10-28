@@ -8,6 +8,7 @@ const manifest = defineManifest({
   icons: {
     32: "icons/leaf-32.png",
   },
+  permissions: ["activeTab"],
   action: {},
   background: {
     service_worker: "src/background.ts",

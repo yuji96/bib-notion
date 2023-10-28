@@ -7,10 +7,13 @@ chrome.runtime.onMessage.addListener((request, _, respond) => {
     "body > div.container-fluid > div > div > a:nth-child(1)"
   );
   if (bibtexBtn instanceof HTMLAnchorElement) {
-    console.log(bibtexBtn.href);
+    fetch(bibtexBtn.href).then((res) => {
+      res.text().then((bibtex) => {
+        console.log(bibtex);
+        respond(bibtex);
+      });
+    });
   }
-
-  respond("pong");
 
   // 送信データの内容に応じて処理を分岐できる
   // switch (request.message) {

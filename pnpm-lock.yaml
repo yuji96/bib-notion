@@ -4,6 +4,9 @@ dependencies:
   '@types/chrome':
     specifier: ^0.0.248
     version: 0.0.248
+  biblatex-csl-converter:
+    specifier: ^2.1.0
+    version: 2.1.0
 
 devDependencies:
   '@crxjs/vite-plugin':
@@ -20,6 +23,14 @@ devDependencies:
     version: 4.4.5
 
 packages:
+
+  /@babel/runtime-corejs3@7.23.2:
+    resolution: {integrity: sha512-54cIh74Z1rp4oIjsHjqN+WM4fMyCBYe+LpZ9jWm51CZ1fbH3SkAzQD/3XLoNkjbJ7YEmjobLXyvQrFypRHOrXw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.33.1
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@crxjs/vite-plugin@2.0.0-beta.19:
     resolution: {integrity: sha512-MHJgSwRktpb436ANPoR67cosjCZ6cpq472h4ImAs8POVw8NxZyNMTX4ayoRgTzmCNy2Xve3oOYt/pm+GO9+XfQ==}
@@ -305,6 +316,13 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /biblatex-csl-converter@2.1.0:
+    resolution: {integrity: sha512-UQVGtNJ7Cw+uoXTq9SjzO+pJANBk/0y6lpg23zX+iC0XNebiCOE+42Z0KW9FU6IzzhlJXJYx6yhhH9nzbxYprw==}
+    engines: {node: '>=16'}
+    dependencies:
+      xregexp: 5.1.1
+    dev: false
+
   /boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: true
@@ -355,6 +373,11 @@ packages:
   /convert-source-map@1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
     dev: true
+
+  /core-js-pure@3.33.1:
+    resolution: {integrity: sha512-wCXGbLjnsP10PlK/thHSQlOLlLKNEkaWbTzVvHHZ79fZNeN1gUmw2gBlpItxPv/pvqldevEXFh/d5stdNvl6EQ==}
+    requiresBuild: true
+    dev: false
 
   /css-select@5.1.0:
     resolution: {integrity: sha512-nwoRF1rvRRnnCqqY7updORDsuqKzqYJ28+oSMaJMMgOauh3fvwHqMS7EZpIPqK8GL+g9mKxF1vP/ZjSeNjEVHg==}
@@ -641,6 +664,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /regenerator-runtime@0.14.0:
+    resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
+    dev: false
+
   /reusify@1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
@@ -749,3 +776,9 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /xregexp@5.1.1:
+    resolution: {integrity: sha512-fKXeVorD+CzWvFs7VBuKTYIW63YD1e1osxwQ8caZ6o1jg6pDAbABDG54LCIq0j5cy7PjRvGIq6sef9DYPXpncg==}
+    dependencies:
+      '@babel/runtime-corejs3': 7.23.2
+    dev: false

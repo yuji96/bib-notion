@@ -15,6 +15,7 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "@types/chrome": "^0.0.248"
+    "@types/chrome": "^0.0.248",
+    "biblatex-csl-converter": "^2.1.0"
   }
 }
