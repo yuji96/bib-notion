@@ -13,17 +13,17 @@ const manifest = defineManifest({
   host_permissions: ["https://api.notion.com/v1/*"],
   action: {},
   background: {
-    service_worker: "src/background.ts",
+    service_worker: "src/service_worker/background.ts",
   },
   content_scripts: [
     {
       matches: ["https://papers.nips.cc/paper_files/paper/*/hash/*-Abstract.html"],
-      js: ["src/neurips.ts"],
+      js: ["src/content_scripts/neurips.ts"],
     },
   ],
   options_ui: {
-    page: "src/options.html",
-    open_in_tab: true,
+    page: "src/options/options.html",
+    open_in_tab: false,
   },
 });
 
