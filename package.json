@@ -4,18 +4,22 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "tailwind": "tailwind --input ./public/assets/tailwind.css --output ./public/assets/tailwind.min.css --postcss --minify",
+    "dev": "pnpm run tailwind && vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "2.0.0-beta.19",
     "@jridgewell/sourcemap-codec": "^1.4.15",
+    "autoprefixer": "^10.4.16",
+    "tailwindcss": "^3.3.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   },
   "dependencies": {
+    "@extend-chrome/storage": "^1.5.0",
     "@notionhq/client": "^2.2.13",
     "@types/chrome": "^0.0.248",
     "biblatex-csl-converter": "^2.1.0"

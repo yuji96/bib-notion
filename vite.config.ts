@@ -8,7 +8,8 @@ const manifest = defineManifest({
   icons: {
     32: "icons/leaf-32.png",
   },
-  permissions: ["activeTab"],
+
+  permissions: ["activeTab", "storage"],
   host_permissions: ["https://api.notion.com/v1/*"],
   action: {},
   background: {
@@ -20,9 +21,17 @@ const manifest = defineManifest({
       js: ["src/neurips.ts"],
     },
   ],
+  options_page: "src/options.html",
 });
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [crx({ manifest })],
+  plugins: crx({ manifest }),
+  server: {
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      port: 5173,
+    },
+  },
 });
