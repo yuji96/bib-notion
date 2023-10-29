@@ -17,7 +17,7 @@ const manifest = defineManifest({
   },
   content_scripts: [
     {
-      matches: ["https://papers.nips.cc/paper_files/paper/*/hash/*-Abstract.html"],
+      matches: ["https://papers.nips.cc/paper_files/paper/*/hash/*.html"],
       js: ["src/content_scripts/neurips.ts"],
     },
   ],

@@ -1,19 +1,23 @@
 console.log("Hello from neurips.ts");
 
-chrome.runtime.onMessage.addListener((request, _, respond) => {
-  console.log(request.message);
+chrome.runtime.onMessage.addListener((_request, _sender, respond) => {
+  const title = document.querySelector(
+    "body > div.container-fluid > div > h4:nth-child(1)"
+  )?.textContent;
+  const author = document.querySelector(
+    "body > div.container-fluid > div > p:nth-child(6) > i"
+  )?.textContent;
+  const booktitle = "NeurIPS";
+  const year = parseInt(window.location.pathname.split("/")[3]);
+  const pdf = (
+    document.querySelector(
+      "body > div.container-fluid > div > div > a:nth-child(3)"
+    ) as HTMLAnchorElement
+  ).href;
+  const url = window.location.href;
 
-  const bibtexBtn = document.querySelector(
-    "body > div.container-fluid > div > div > a:nth-child(1)"
-  );
-  if (bibtexBtn instanceof HTMLAnchorElement) {
-    fetch(bibtexBtn.href).then((res) => {
-      res.text().then((bibtex) => {
-        console.log(bibtex);
-        respond(bibtex);
-      });
-    });
-  }
+  console.log({ title, author, booktitle, year, pdf, url });
+  respond({ title, author, booktitle, year, pdf, url });
 
   return true;
 });
