@@ -32,21 +32,39 @@ chrome.action.onClicked.addListener((tab) => {
         tabs[0].url
       );
 
-      const notion = new Client({ auth: NOTION_TOKEN });
-      (async () =>
-        await notion.pages.create({
+      const options = {
+        method: "POST",
+        mode: "cors" as RequestMode,
+        headers: {
+          Authorization: `Bearer ${NOTION_TOKEN}`,
+          accept: "application/json",
+          "Notion-Version": "2022-06-28",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
           parent: { database_id: DATABASE_ID! },
           properties: {
-            Title: { title: [{ text: { content: "title" } }] },
+            Title: { title: [{ text: { content: info.title[0].text } }] },
             "Author(s)": {
-              rich_text: [{ type: "text", text: { content: "authors" } }],
+              rich_text: [{ type: "text", text: { content: author_reversed } }],
             },
-            Booktitle: { rich_text: [{ type: "text", text: { content: "book" } }] },
-            Year: { number: 2021 },
-            URL: { url: "url" },
-            PDF: { url: "pdf" },
+            Booktitle: {
+              rich_text: [
+                { type: "text", text: { content: info.booktitle[0].text } },
+              ],
+            },
+            Year: { number: parseInt(info.date) }, // year のみとは限らないかもしれない
+            PDF: { url: info.url },
+            URL: { url: tabs[0].url },
           },
-        }))();
+        }),
+      };
+
+      fetch("https://api.notion.com/v1/pages", options)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => console.error(err));
     });
   });
 });

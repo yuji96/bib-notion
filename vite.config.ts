@@ -9,6 +9,7 @@ const manifest = defineManifest({
     32: "icons/leaf-32.png",
   },
   permissions: ["activeTab"],
+  host_permissions: ["https://api.notion.com/v1/*"],
   action: {},
   background: {
     service_worker: "src/background.ts",
