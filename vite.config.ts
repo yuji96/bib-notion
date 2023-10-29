@@ -6,11 +6,17 @@ const manifest = defineManifest({
   name: "CRX Example",
   version: "1.0.0",
   icons: {
-    32: "icons/leaf-32.png",
+    32: "icons/leaf-green-32.png",
   },
 
   permissions: ["activeTab", "storage"],
-  host_permissions: ["https://api.notion.com/v1/*"],
+  host_permissions: [
+    "https://api.notion.com/v1/*",
+    "https://papers.nips.cc/paper_files/paper/*/hash/*.html",
+    "https://aclanthology.org/*-*/",
+    "https://openreview.net/forum?id=*",
+    "https://arxiv.org/abs/*",
+  ],
   action: {},
   background: {
     service_worker: "src/service_worker/background.ts",

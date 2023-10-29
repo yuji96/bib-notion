@@ -2,9 +2,16 @@ import { Client } from "@notionhq/client";
 
 console.log("Hello from background.ts");
 
-// TODO: url で action の enabled を切り替えたい
-// TODO: 成功・失敗通知をしたい
-// TODO: 重複登録を防ぎたい
+chrome.tabs.onActivated.addListener(({ tabId }) => {
+  console.log("onActivated");
+  chrome.tabs.get(tabId).then((tab) => {
+    if (tab.url === undefined) {
+      chrome.action.setIcon({ path: "icons/leaf-gray-32.png" });
+    } else {
+      chrome.action.setIcon({ path: "icons/leaf-green-32.png" });
+    }
+  });
+});
 
 chrome.action.onClicked.addListener(async (tab) => {
   console.log("clicked");
