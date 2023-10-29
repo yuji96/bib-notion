@@ -15,17 +15,5 @@ chrome.runtime.onMessage.addListener((request, _, respond) => {
     });
   }
 
-  // 送信データの内容に応じて処理を分岐できる
-  // switch (request.message) {
-  //   case "getItems": {
-  //     const items = ["Apple", "Orange", "Melon"];
-  //     // 送信元へデータを返す
-  //     respond(items);
-  //     break;
-  //   }
-  //   default: {
-  //     throw new Error(`no action: ${request.action}`);
-  //   }
-  // }
   return true;
 });

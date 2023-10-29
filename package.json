@@ -17,7 +17,6 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "@extend-chrome/storage": "^1.5.0",
     "@notionhq/client": "^2.2.13",
     "@types/chrome": "^0.0.248",
     "biblatex-csl-converter": "^2.1.0",

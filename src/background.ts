@@ -4,7 +4,8 @@ import { BibLatexParser } from "biblatex-csl-converter";
 console.log("Hello from background.ts");
 
 // TODO: url で action の enabled を切り替えたい
-// TODO: async/await にしたい
+// TODO: 成功・失敗通知をしたい
+// TODO: 重複登録を防ぎたい
 
 chrome.action.onClicked.addListener(async (tab) => {
   console.log("clicked");
