@@ -17,9 +17,10 @@ const updateCredential = () => {
       }, 1500);
     });
 
-  chrome.storage.local.get(["APIToken", "databaseID"], (result) => {
-    console.log(result);
-  });
+  // (async () => {
+  //   const localStrage = await chrome.storage.local.get(["APIToken", "databaseID"]);
+  //   console.log(localStrage.APIToken, localStrage.databaseID);
+  // })();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
