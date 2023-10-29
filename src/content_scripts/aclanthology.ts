@@ -6,9 +6,7 @@ chrome.runtime.onMessage.addListener((_request, _sender, respond) => {
     ?.getAttribute("content");
   console.log(title);
   const author = document.querySelector(".lead")?.textContent;
-  const booktitle = document.querySelector(
-    "a[href^='/venues/naacl/']"
-  )?.textContent;
+  const booktitle = document.querySelector("a[href^='/venues']")?.textContent;
   const year = parseInt(
     document
       .querySelector("meta[name='citation_publication_date']")
