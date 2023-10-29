@@ -21,7 +21,10 @@ const manifest = defineManifest({
       js: ["src/neurips.ts"],
     },
   ],
-  options_page: "src/options.html",
+  options_ui: {
+    page: "src/options.html",
+    open_in_tab: true,
+  },
 });
 
 // https://vitejs.dev/config/

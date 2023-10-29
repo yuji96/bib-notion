@@ -4,12 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap w/ Vite</title>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.ts"></script>
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite!</h1>
-      <button class="btn btn-primary">Primary button</button>
+    <div class="container v-100 d-flex align-items-center p-3 mb-1">
+      <form class="w-50 d-flex flex-column m-auto" style="min-width: 300px">
+        <p>These information will saved in the local strage.</p>
+        <div class="mb-3">
+          <label for="APIToken" class="form-label">Notion API Token</label>
+          <input
+            type="text"
+            class="form-control"
+            id="APIToken"
+            aria-describedby="APITokenHelp"
+          />
+          <div id="APITokenHelp" class="form-text">
+            Create your integration:
+            <a
+              href="https://www.notion.so/my-integrations"
+              target="_blank"
+              rel="noreferrer noopener"
+              >https://www.notion.so/my-integrations</a
+            >
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="databaseID" class="form-label">Database ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="databaseID"
+            aria-describedby="databaseIDHelp"
+          />
+          <div id="databaseIDHelp" class="form-text">
+            You can find it in the database url:<br />
+            "https://www.notion.so/{username}/{datapase-id}?v={view-id}"
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary">Update</button>
+      </form>
     </div>
+    <script src="options.ts"></script>
   </body>
 </html>
