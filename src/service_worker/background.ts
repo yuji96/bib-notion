@@ -14,6 +14,7 @@ chrome.action.onClicked.addListener(async (tab) => {
   console.log("send message");
   // TODO: catch error
   const info = await chrome.tabs.sendMessage(tab.id, {});
+  console.log(info);
 
   const localStrage = await chrome.storage.local.get(["APIToken", "databaseID"]);
   const notion = new Client({ auth: localStrage.APIToken });
@@ -28,7 +29,7 @@ chrome.action.onClicked.addListener(async (tab) => {
         Booktitle: {
           rich_text: [{ type: "text", text: { content: info.booktitle } }],
         },
-        Year: { number: parseInt(info.date) }, // year のみとは限らないかもしれない
+        Year: { number: info.year },
         URL: { url: info.url },
         PDF: { url: info.pdf },
       },

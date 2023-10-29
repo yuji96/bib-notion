@@ -20,6 +20,18 @@ const manifest = defineManifest({
       matches: ["https://papers.nips.cc/paper_files/paper/*/hash/*.html"],
       js: ["src/content_scripts/neurips.ts"],
     },
+    {
+      matches: ["https://aclanthology.org/*-*/"],
+      js: ["src/content_scripts/aclanthology.ts"],
+    },
+    {
+      matches: ["https://openreview.net/forum?id=*"],
+      js: ["src/content_scripts/openreview.ts"],
+    },
+    {
+      matches: ["https://arxiv.org/abs/*"],
+      js: ["src/content_scripts/arxiv.ts"],
+    },
   ],
   options_ui: {
     page: "src/options/options.html",
