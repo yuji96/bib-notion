@@ -3,7 +3,7 @@ import { Client } from "@notionhq/client";
 console.log("Hello from background.ts");
 
 chrome.tabs.onActivated.addListener(({ tabId }) => {
-  console.log("onActivated");
+  chrome.action.setBadgeText({ text: "" });
   chrome.tabs.get(tabId).then((tab) => {
     if (tab.url === undefined) {
       chrome.action.setIcon({ path: "icons/leaf-gray-32.png" });
@@ -21,6 +21,12 @@ chrome.action.onClicked.addListener(async (tab) => {
   console.log("send message");
   // TODO: catch error
   const info = await chrome.tabs.sendMessage(tab.id, {});
+  if (info === undefined) {
+    chrome.action.setBadgeBackgroundColor({ color: "#FF7F7F" });
+    chrome.action.setBadgeText({ text: "ERR" });
+    console.error("content script failed");
+    return;
+  }
   console.log(info);
 
   const localStrage = await chrome.storage.local.get(["APIToken", "databaseID"]);
@@ -41,6 +47,14 @@ chrome.action.onClicked.addListener(async (tab) => {
         PDF: { url: info.pdf },
       },
     })
-    .then((response) => console.log(response))
-    .catch((error) => console.log(error));
+    .then(() => {
+      chrome.action.setBadgeBackgroundColor({ color: "#99FF99" });
+      chrome.action.setBadgeText({ text: "OK" });
+    })
+    .catch((error) => {
+      chrome.action.setBadgeBackgroundColor({ color: "#FF7F7F" });
+      chrome.action.setBadgeText({ text: "ERR" });
+      console.error("notion api failed");
+      console.error(error);
+    });
 });
