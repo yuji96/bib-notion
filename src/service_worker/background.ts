@@ -2,12 +2,32 @@ import { Client } from "@notionhq/client";
 
 console.log("Hello from background.ts");
 
-chrome.tabs.onActivated.addListener(({ tabId }) => {
+chrome.tabs.onUpdated.addListener((_tabId, changeInfo, _updatedTab) => {
   chrome.action.setBadgeText({ text: "" });
+
+  if (changeInfo.status !== "complete") return;
+  console.log("updated", _tabId, changeInfo, _updatedTab);
+
+  if (_updatedTab.url === undefined) {
+    console.log("disable");
+    chrome.action.setIcon({ path: "icons/leaf-gray-32.png" });
+  } else {
+    console.log("disable");
+    chrome.action.setIcon({ path: "icons/leaf-green-32.png" });
+  }
+});
+
+chrome.tabs.onActivated.addListener(({ tabId }) => {
+  console.log("activated");
+  chrome.action.setBadgeText({ text: "" });
+
   chrome.tabs.get(tabId).then((tab) => {
-    if (tab.url === undefined) {
+    console.log(tab);
+    if (tab.url === undefined && tab.pendingUrl === undefined) {
       chrome.action.setIcon({ path: "icons/leaf-gray-32.png" });
+      console.log("disable");
     } else {
+      console.log("enable");
       chrome.action.setIcon({ path: "icons/leaf-green-32.png" });
     }
   });
