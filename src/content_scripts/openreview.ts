@@ -1,16 +1,26 @@
 console.log("openreview.ts");
 
 chrome.runtime.onMessage.addListener((_request, _sender, respond) => {
+  const dataContent = JSON.parse(
+    document.getElementById("__NEXT_DATA__")?.innerText as string
+  ).props.pageProps.forumNote.content;
+  // console.log(dataContent);
+
+  let author, booktitle;
   const title = document
     .querySelector("meta[name='citation_title']")
     ?.getAttribute("content");
-  const author = document.querySelector(
-    ".note:nth-child(1) .signatures"
-  )?.textContent;
+  if (dataContent.authors instanceof Array) {
+    author = dataContent.authors.join(", ");
+  } else {
+    author = dataContent.authors.value.join(", ");
+  }
   // accept/regect, main/workshop などが混ざりまくってる
-  const booktitle = document.querySelector(
-    ".note:nth-child(1) .pull-left .item:nth-child(2)"
-  )?.textContent;
+  if (dataContent.authors instanceof String) {
+    booktitle = dataContent.venue;
+  } else {
+    booktitle = dataContent.venue.value;
+  }
   const year = parseInt(
     document
       .querySelector("meta[name='citation_publication_date']")

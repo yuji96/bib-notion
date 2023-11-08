@@ -57,7 +57,9 @@ chrome.action.onClicked.addListener(async (tab) => {
       properties: {
         Title: { title: [{ text: { content: info.title } }] },
         "Author(s)": {
-          rich_text: [{ type: "text", text: { content: info.author } }],
+          rich_text: [
+            { type: "text", text: { content: info.author.replace(/\n/g, "") } },
+          ],
         },
         Booktitle: {
           rich_text: [{ type: "text", text: { content: info.booktitle } }],
