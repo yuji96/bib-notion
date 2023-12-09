@@ -13,7 +13,7 @@ const manifest = defineManifest({
   host_permissions: [
     "https://api.notion.com/v1/*",
     "https://papers.nips.cc/paper_files/paper/*/hash/*.html",
-    "https://proceedings.neurips.cc/paper_files/paper/*/hash/*-Abstract.html",
+    "https://proceedings.neurips.cc/**/hash/*-Abstract.html",
     "https://aclanthology.org/*-*/",
     "https://openreview.net/forum?id=*",
     "https://arxiv.org/abs/*",
@@ -26,7 +26,7 @@ const manifest = defineManifest({
     {
       matches: [
         "https://papers.nips.cc/paper_files/paper/*/hash/*.html",
-        "https://proceedings.neurips.cc/paper_files/paper/*/hash/*-Abstract.html",
+        "https://proceedings.neurips.cc/**/hash/*-Abstract.html",
       ],
       js: ["src/content_scripts/neurips.ts"],
     },

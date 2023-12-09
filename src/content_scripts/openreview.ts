@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener((_request, _sender, respond) => {
   const dataContent = JSON.parse(
     document.getElementById("__NEXT_DATA__")?.innerText as string
   ).props.pageProps.forumNote.content;
-  // console.log(dataContent);
+  console.log(dataContent);
 
   let author, booktitle;
   const title = document
@@ -16,11 +16,9 @@ chrome.runtime.onMessage.addListener((_request, _sender, respond) => {
     author = dataContent.authors.value.join(", ");
   }
   // accept/regect, main/workshop などが混ざりまくってる
-  if (dataContent.authors instanceof String) {
-    booktitle = dataContent.venue;
-  } else {
-    booktitle = dataContent.venue.value;
-  }
+  booktitle = document.querySelector(
+    "div.meta_row.pull-left > span:nth-of-type(2)"
+  )?.textContent;
   const year = parseInt(
     document
       .querySelector("meta[name='citation_publication_date']")
